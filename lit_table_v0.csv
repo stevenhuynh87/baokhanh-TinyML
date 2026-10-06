@@ -1,21 +1,21 @@
 id,paper_title,authors,venue,year,category
 L1,Adaptive Dynamic Checkpointing for Safe Efficient Intermittent Computing,Maeng & Lucia,OSDI,2018,Checkpointing
-L2,Alpaca: Intermittent Execution without Runtime Overhead,Maeng, Colin & Lucia,OOPSLA,2017,Intermittent Execution
-L3,Intermittent Computation without Hardware Support or Programmer Intervention,Van der Woude & Hicks,OSDI,2016,Intermittent Execution
+L2,"Alpaca: Intermittent Execution without Runtime Overhead","Maeng, Colin & Lucia",OOPSLA,2017,Intermittent Execution
+L3,Intermittent Computation without Hardware Support or Programmer Intervention,"Van der Woude & Hicks",OSDI,2016,Intermittent Execution
 L4,Clank: Architectural Support for Intermittent Computation,Hicks,ISCA,2017,Architecture
-L5,Intelligence Beyond the Edge: Inference on Intermittent Embedded Systems,Gobieski et al.,ASPLOS,2019,Intermittent ML
-L6,InK: Intermittent Kernel for Tiny Microcontrollers,Maeng et al.,ASPLOS,2020,OS Support
-L7,Coati: An Intermittent OS for Energy Harvesting,Djukic et al.,DAC,2021,OS Support
-L8,Chard: Dynamic Task-based Intermittent Execution,Gao et al.,DATE,2020,Task-based
-L9,Amber: Intermittent Computing with Non-Volatile Registers,Knell et al.,ICCAD,2019,Hardware/Software
-L10,TiM: Temporal Intermittent Machine Learning,Patel et al.,IoTDI,2021,TinyML
-L11,Energy-Aware TinyML Systems for Intermittent IoT Nodes,Zhang et al.,TMC,2022,TinyML
-L12,Blink: Fast Intermittent Neural Network Inference,Wang et al.,DATE,2021,Inference Optimization
-L13,Zygarde: Efficient Intermittent Inference for IoT,Islam & Nirjon,IMWUT,2020,Early-Exit
-L14,Intermittent Inference with Nonuniformly Compressed Multi-Exit NN,Wu et al.,DAC,2020,Multi-Exit
-L15,HarvNet: SOTA Multi-Exit on Energy Harvesting Devices,Jeon et al.,MobiSys,2023,State-of-the-Art
-L16,Pruning Neural Networks for Intermittent Systems,Kim et al.,DAC,2021,Pruning
-L17,Quantization Techniques for Intermittent Deep Learning,Lee et al.,ICCAD,2022,Quantization
-L18,Memory-Efficient Intermittent Computing via Streaming,Chen et al.,RTSS,2022,Streaming
-L19,Dynamic Voltage Scaling for Intermittent Energy Harvesting,Liu et al.,DAC,2021,Power Management
-L20,Intermittent Computing: Challenges and Opportunities,Lucia et al.,LIPIcs,2017,Survey
+L5,Intelligence Beyond the Edge: Inference on Intermittent Embedded Systems,"Gobieski et al.",ASPLOS,2019,Intermittent ML
+L6,InK: Intermittent Kernel for Tiny Microcontrollers,"Maeng et al.",ASPLOS,2020,OS Support
+L7,Coati: An Intermittent OS for Energy Harvesting,"Djukic et al.",DAC,2021,OS Support
+L8,Chard: Dynamic Task-based Intermittent Execution,"Gao et al.",DATE,2020,Task-based
+L9,Amber: Intermittent Computing with Non-Volatile Registers,"Knell et al.",ICCAD,2019,Hardware/Software
+L10,TiM: Temporal Intermittent Machine Learning,"Patel et al.",IoTDI,2021,TinyML
+L11,Energy-Aware TinyML Systems for Intermittent IoT Nodes,"Zhang et al.",TMC,2022,TinyML
+L12,Blink: Fast Intermittent Neural Network Inference,"Wang et al.",DATE,2021,Inference Optimization
+L13,Zygarde: Efficient Intermittent Inference for IoT,"Islam & Nirjon",IMWUT,2020,Early-Exit
+L14,Intermittent Inference with Nonuniformly Compressed Multi-Exit NN,"Wu et al.",DAC,2020,Multi-Exit
+L15,HarvNet: SOTA Multi-Exit on Energy Harvesting Devices,"Jeon et al.",MobiSys,2023,State-of-the-Art
+L16,Pruning Neural Networks for Intermittent Systems,"Kim et al.",DAC,2021,Pruning
+L17,Quantization Techniques for Intermittent Deep Learning,"Lee et al.",ICCAD,2022,Quantization
+L18,Memory-Efficient Intermittent Computing via Streaming,"Chen et al.",RTSS,2022,Streaming
+L19,Dynamic Voltage Scaling for Intermittent Energy Harvesting,"Liu et al.",DAC,2021,Power Management
+L20,"Intermittent Computing: Challenges and Opportunities","Lucia et al.",LIPIcs,2017,Survey
