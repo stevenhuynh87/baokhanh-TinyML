@@ -441,8 +441,3 @@ Ví dụ này minh họa sự cần thiết của việc xét đồng thời nă
 Theo Roadmap Section 7.2, simulator cần được kiểm tra bằng unit tests bảo toàn năng lượng, nghiệm giải tích với công suất không đổi, xu hướng của ít nhất hai baseline và phân tích độ nhạy tham số.
 
 Chưa có kết quả thực nghiệm trong tài liệu này. Novelty và các giả thuyết PSB, ETCT, MDP vẫn cần được kiểm chứng.
-
-
-**Note:** Bản nháp formulation có hỗ trợ AI; các giả định và công thức cần được sinh viên kiểm chứng và cố vấn đánh giá. Chưa tái lập thí nghiệm hoặc hoàn thành simulator.
-
-**Status: Pending student verification and advisor review.**
