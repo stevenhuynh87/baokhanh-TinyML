@@ -124,10 +124,9 @@ Với bước mô phỏng $\Delta t$:
 
 $$
 U_{t+\Delta t}=
-\operatorname{clip}
-\left(
-U_t+[\eta P_h(t)-P_{load}(t)]\Delta t,
-0,U_{max}
+\min\left(
+U_{max},
+\max\left(0,U_t+[\eta P_h(t)-P_{load}(t)]\Delta t\right)
 \right)
 $$
 
@@ -151,7 +150,7 @@ Năng lượng vượt quá dung lượng tụ được ghi nhận là overflow,
 Chi phí tính toán block k:
 
 $$
-E_k^{comp}=\sum_{o\in\mathcal O_k}n_oe_o
+E_k^{comp}=\sum_{o\in\mathcal{O}_k}n_oe_o
 $$
 
 Trong đó $n_o$ là số phép toán loại o và $e_o$ là năng lượng tiêu thụ cho mỗi phép toán.
@@ -260,8 +259,8 @@ $$
 N_{correct,D}=
 \sum_{i=1}^{N}
 b_i\,
-\mathbb 1[\hat y_i=y_i]\,
-\mathbb 1[T_i\le D_i]
+\mathbf{1}[\hat y_i=y_i]\,
+\mathbf{1}[T_i\le D_i]
 $$
 
 Mẫu bị bỏ qua hoặc không hoàn thành có đóng góp bằng 0.
@@ -275,15 +274,11 @@ $$
 Mục tiêu chính:
 
 $$
-\boxed{
-\max_{\pi}
-J(\pi)=
-\frac{\mathbb E[N_{correct,D}]}
-{\mathbb E[E_H]}
-}
+\max_{\pi} J(\pi)=
+\frac{\mathbb{E}[N_{correct,D}]}{\mathbb{E}[E_H]}
 $$
 
-với $\mathbb E[E_H]>0$.
+với $\mathbb{E}[E_H]>0$.
 
 Đơn vị báo cáo: correct-completions/mJ.
 
@@ -293,8 +288,8 @@ Theo định hướng Roadmap Section 7.3, reward thực dụng có thể sử d
 
 $$
 r_t=
-\mathbb 1[a_t=\mathrm{EXIT}]
-\mathbb 1[\Delta t_a\le d_t]
+\mathbf{1}[a_t=\mathrm{EXIT}]
+\mathbf{1}[\Delta t_a\le d_t]
 \widehat{\mathrm{Acc}}_k(c_k)
 -\mu E_{used,t}
 $$
