@@ -52,28 +52,27 @@ Phạm vi: algorithm, model, simulation và experimental validation trên tài n
 
 Cho DNN gồm K block, mỗi block có một exit head:
 
-$$
+```math
 h_0=x_i,\qquad h_k=B_k(h_{k-1})
-$$
+```
 
 Tại exit k, xác suất phân loại được biểu diễn bởi $p_k(j\mid h_k)$.
 
-$$
+```math
 \hat y_k=\arg\max_j p_k(j\mid h_k)
-$$
+```
 
-$$
+```math
 c_k=\max_j p_k(j\mid h_k)
-$$
+```
 
 Confidence cần được hiệu chỉnh trên tập validation.
 
 Khi thực hiện PERSIST, PSB tạo trạng thái nén:
 
-$$
-s_k=Q_b(g_k(h_k)),\qquad
-\hat h_k=r_k(s_k)
-$$
+```math
+s_k=Q_b(g_k(h_k)),\qquad \hat h_k=r_k(s_k)
+```
 
 Trong đó $g_k$ là encoder, $Q_b$ là phép lượng tử hóa b-bit và $r_k$ là decoder.
 
@@ -87,16 +86,15 @@ ETCT sử dụng xác suất dừng tại mỗi exit, ước lượng từ devel
 
 Năng lượng thu hoạch sau bộ chuyển đổi trong khoảng thời gian $\Delta t$:
 
-$$
-E_h(t,\Delta t)=
-\int_t^{t+\Delta t}\eta P_h(u)\,du
-$$
+```math
+E_h(t,\Delta t)= \int_t^{t+\Delta t}\eta P_h(u)\,du
+```
 
 Với trace ánh sáng EnHANTs có đơn vị $\mu W/cm^2$, công suất điện được mô hình hóa bằng diện tích pin quang điện và hiệu suất chuyển đổi:
 
-$$
+```math
 P_h(t)=10^{-6}\eta_{pv}A_{pv}G(t)
-$$
+```
 
 Trong đó $A_{pv}$ có đơn vị $cm^2$, $G(t)$ có đơn vị $\mu W/cm^2$ và $P_h(t)$ có đơn vị W.
 
@@ -104,36 +102,31 @@ Các tham số chuyển đổi phải được hiệu chỉnh, không xem mật 
 
 Năng lượng vật lý của tụ:
 
-$$
+```math
 U(t)=\frac12 CV(t)^2
-$$
+```
 
 Năng lượng khả dụng trước ngưỡng mất điện:
 
-$$
+```math
 E(t)=\max\left(0,U(t)-\frac12 CV_{off}^2\right)
-$$
+```
 
 Theo Roadmap Section 7.2, dynamics của tụ được biểu diễn:
 
-$$
+```math
 \frac{dU}{dt}=\eta P_h(t)-P_{load}(t)
-$$
+```
 
 Với bước mô phỏng $\Delta t$:
 
-$$
-U_{t+\Delta t}=
-\min\left(
-U_{max},
-\max\left(0,U_t+[\eta P_h(t)-P_{load}(t)]\Delta t\right)
-\right)
-$$
+```math
+U_{t+\Delta t}= \min\left( U_{max}, \max\left(0,U_t+[\eta P_h(t)-P_{load}(t)]\Delta t\right) \right)
+```
 
-$$
-U_{max}=\frac12 CV_{max}^2,\qquad
-V(t)=\sqrt{\frac{2U(t)}{C}}
-$$
+```math
+U_{max}=\frac12 CV_{max}^2,\qquad V(t)=\sqrt{\frac{2U(t)}{C}}
+```
 
 Quy tắc hysteresis:
 
@@ -149,35 +142,29 @@ Năng lượng vượt quá dung lượng tụ được ghi nhận là overflow,
 
 Chi phí tính toán block k:
 
-$$
+```math
 E_k^{comp}=\sum_{o\in\mathcal{O}_k}n_oe_o
-$$
+```
 
 Trong đó $n_o$ là số phép toán loại o và $e_o$ là năng lượng tiêu thụ cho mỗi phép toán.
 
 Chi phí lưu trạng thái:
 
-$$
-E_k^{pers}
-=
-E_k^{enc}+S_ke_{NVM}^{w}+e_w^{ovh}
-$$
+```math
+E_k^{pers} = E_k^{enc}+S_ke_{NVM}^{w}+e_w^{ovh}
+```
 
 Chi phí khôi phục trạng thái:
 
-$$
-E_k^{rest}
-=
-S_ke_{NVM}^{r}+E_k^{dec}
-$$
+```math
+E_k^{rest} = S_ke_{NVM}^{r}+E_k^{dec}
+```
 
 Tổng chi phí của một lần lưu, khởi động và khôi phục thành công:
 
-$$
-E_k^{checkpoint}
-=
-E_k^{pers}+E_{boot}+E_k^{rest}
-$$
+```math
+E_k^{checkpoint} = E_k^{pers}+E_{boot}+E_k^{rest}
+```
 
 Trong đó:
 
@@ -196,9 +183,9 @@ Các tham số phần cứng hiện ở trạng thái NEEDS VERIFICATION, sẽ �
 
 Mô hình chính sách được xây dựng dưới dạng MDP xấp xỉ với trạng thái:
 
-$$
+```math
 z_t=(\bar E_t,\bar P_{h,t},k,\bar c_k,\rho_t,d_t,q_t)
-$$
+```
 
 Trong đó:
 
@@ -212,17 +199,15 @@ Trong đó:
 
 Với thời điểm mẫu đến là $t_i^{arr}$:
 
-$$
+```math
 d_t=\max(0,D_i-(t-t_i^{arr}))
-$$
+```
 
 Tập hành động:
 
-$$
-\mathcal A=
-\{\mathrm{CONT},\mathrm{EXIT},
-\mathrm{PERSIST},\mathrm{SKIP}\}
-$$
+```math
+\mathcal A= \{\mathrm{CONT},\mathrm{EXIT}, \mathrm{PERSIST},\mathrm{SKIP}\}
+```
 
 | Action | State transition |
 |---|---|
@@ -233,15 +218,15 @@ $$
 
 Policy:
 
-$$
+```math
 a_t=\pi(z_t)
-$$
+```
 
 Sau mỗi hành động có thời lượng $\Delta t_a$:
 
-$$
+```math
 d_{t+1}=\max(0,d_t-\Delta t_a)
-$$
+```
 
 Năng lượng được cập nhật theo Section 4. Nếu mất điện, tiến độ volatile bị mất và hệ thống chỉ được khôi phục từ checkpoint hợp lệ.
 
@@ -255,28 +240,23 @@ Cho N mẫu đến trong khoảng mô phỏng cố định $T_{sim}$. Đặt $b_
 
 Số dự đoán đúng và đúng hạn:
 
-$$
-N_{correct,D}=
-\sum_{i=1}^{N}
-b_i\,
-\mathbf{1}[\hat y_i=y_i]\,
-\mathbf{1}[T_i\le D_i]
-$$
+```math
+N_{correct,D}= \sum_{i=1}^{N} b_i\, \mathbf{1}[\hat y_i=y_i]\, \mathbf{1}[T_i\le D_i]
+```
 
 Mẫu bị bỏ qua hoặc không hoàn thành có đóng góp bằng 0.
 
 Năng lượng thu hoạch sau bộ chuyển đổi, trước tổn thất overflow:
 
-$$
+```math
 E_H=\int_0^{T_{sim}}\eta P_h(t)\,dt
-$$
+```
 
 Mục tiêu chính:
 
-$$
-\max_{\pi} J(\pi)=
-\frac{\mathbb{E}[N_{correct,D}]}{\mathbb{E}[E_H]}
-$$
+```math
+\max_{\pi} J(\pi)= \frac{\mathbb{E}[N_{correct,D}]}{\mathbb{E}[E_H]}
+```
 
 với $\mathbb{E}[E_H]>0$.
 
@@ -286,13 +266,9 @@ Trong giai đoạn đầu, policy được tối ưu trên một DNN cố địn
 
 Theo định hướng Roadmap Section 7.3, reward thực dụng có thể sử dụng:
 
-$$
-r_t=
-\mathbf{1}[a_t=\mathrm{EXIT}]
-\mathbf{1}[\Delta t_a\le d_t]
-\widehat{\mathrm{Acc}}_k(c_k)
--\mu E_{used,t}
-$$
+```math
+r_t= \mathbf{1}[a_t=\mathrm{EXIT}] \mathbf{1}[\Delta t_a\le d_t] \widehat{\mathrm{Acc}}_k(c_k) -\mu E_{used,t}
+```
 
 Trong đó $\widehat{\mathrm{Acc}}_k(c_k)$ được ước lượng từ validation data, không sử dụng ground-truth label của mẫu test khi ra quyết định.
 
@@ -306,35 +282,33 @@ Policy dự kiến được giải offline bằng value iteration trên không g
 
 **Energy:**
 
-$$
+```math
 0\le U(t)\le U_{max}
-$$
+```
 
 Điều kiện đủ bảo thủ để thực hiện một hành động mà không phụ thuộc năng lượng thu trong tương lai:
 
-$$
+```math
 E_a+E_{margin}\le E(t)
-$$
+```
 
 Trong đó $E_{margin}>0$ là biên an toàn.
 
 **Memory:**
 
-$$
-M_{weights}+M_{checkpoint}+M_{LUT}
-+M_{runtime,NVM}\le M_{NVM}
-$$
+```math
+M_{weights}+M_{checkpoint}+M_{LUT} +M_{runtime,NVM}\le M_{NVM}
+```
 
-$$
-M_{activation}^{peak}+M_{workspace}
-+M_{runtime,SRAM}\le M_{SRAM}
-$$
+```math
+M_{activation}^{peak}+M_{workspace} +M_{runtime,SRAM}\le M_{SRAM}
+```
 
 **Deadline:**
 
-$$
+```math
 T_i\le D_i
-$$
+```
 
 Đây là điều kiện để một inference được tính là đúng hạn. Thời gian bao gồm suy luận, lưu/khôi phục, khởi động và chờ sạc.
 
@@ -398,61 +372,53 @@ Giả sử thiết bị đã khởi động xong, có:
 
 Năng lượng khả dụng ban đầu:
 
-$$
-E_0=\frac12(100\times10^{-6})(3^2-2^2)
-=250\ \mu J
-$$
+```math
+E_0=\frac12(100\times10^{-6})(3^2-2^2) =250\ \mu J
+```
 
 Năng lượng thu thêm trong 0.1 s:
 
-$$
-E_h=0.8\times100\times0.1
-=8\ \mu J
-$$
+```math
+E_h=0.8\times100\times0.1 =8\ \mu J
+```
 
 Năng lượng còn lại sau block:
 
-$$
+```math
 E_1=250+8-120=138\ \mu J
-$$
+```
 
 Điện áp tương ứng:
 
-$$
-V_1=
-\sqrt{2^2+\frac{2(138\times10^{-6})}
-{100\times10^{-6}}}
-=2.6\ V
-$$
+```math
+V_1= \sqrt{2^2+\frac{2(138\times10^{-6})} {100\times10^{-6}}} =2.6\ V
+```
 
 Giả sử block tiếp theo cần 160 uJ. CONT không đáp ứng điều kiện an toàn bảo thủ vì 138 uJ nhỏ hơn 160 uJ.
 
 Giả sử trạng thái cần lưu gồm 100 byte, chi phí ghi 0.2 uJ/byte, encoder 5 uJ và overhead ghi 5 uJ:
 
-$$
-E^{pers}=100\times0.2+5+5
-=30\ \mu J
-$$
+```math
+E^{pers}=100\times0.2+5+5 =30\ \mu J
+```
 
 Bỏ qua năng lượng thu thêm trong quá trình ghi:
 
-$$
+```math
 E_2=138-30=108\ \mu J
-$$
+```
 
 Nếu chọn PERSIST và chờ sạc đến ngưỡng bật nguồn, thời gian sạc tối thiểu theo mô hình đơn giản, bỏ qua standby power, là:
 
-$$
-T_{charge}=
-\frac{250-108}{0.8\times100}
-=1.775\ s
-$$
+```math
+T_{charge}= \frac{250-108}{0.8\times100} =1.775\ s
+```
 
 Deadline còn lại sau block đầu tiên là:
 
-$$
+```math
 d=1.0-0.1=0.9\ s
-$$
+```
 
 Do thời gian sạc lớn hơn deadline còn lại, PERSIST rồi tiếp tục không thể hoàn thành mẫu đúng hạn trong ví dụ này.
 
